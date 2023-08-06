@@ -47,9 +47,9 @@ public class Goal {
     private int age;
     private String gender;
     private Level activityLevel;
-
+    private int purpose;
     public Goal(){}
-    public Goal(int id, float BMR, float weight, float height, int age, String gender, String activityLevel) {
+    public Goal(int id, float BMR, float weight, float height, int age, String gender, String activityLevel, int purpose) {
         this.id = id;
         this.BMR = BMR;
         this.weight = weight;
@@ -57,6 +57,15 @@ public class Goal {
         this.age = age;
         this.gender = gender;
         this.activityLevel = Level.valueOf(activityLevel);
+        this.purpose = purpose;
+    }
+
+    public int getPurpose() {
+        return purpose;
+    }
+
+    public void setPurpose(int purpose) {
+        this.purpose = purpose;
     }
 
     public int getId() {

@@ -29,15 +29,19 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        // Create viewModel and database handler.
         super.onCreate(savedInstanceState);
         viewModel = new ViewModelProvider(this).get(AppViewModel.class);
-        if(viewModel.getDbHelper() == null){
-            viewModel.setDbHelper(new DatabaseHandler(this));
-            System.out.println("create new db");
-        }
+//        if(viewModel.getDbHelper() == null){
+//            viewModel.setDbHelper(new DatabaseHandler(this));
+//            System.out.println("create new db");
+//        }
+        viewModel.setDbHelper(new DatabaseHandler(this));
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        //Handle Mail icon clicked
+
+        //Handle Mail icon when clicked
         setSupportActionBar(binding.appBarMain.toolbar);
         binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_diary, R.id.nav_slideshow, R.id.nav_goal)
+                R.id.nav_home, R.id.nav_diary, R.id.nav_foodList, R.id.nav_goal)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
